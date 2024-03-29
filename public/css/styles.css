@@ -1,3 +1,27 @@
+/* start sticky footer*/
+html, body {
+  100%
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+/*end sticky footer*/
+
+
 /*start main.handlebars*/
 
 nav {
@@ -42,3 +66,37 @@ nav ul li a:hover {
 }
 
 /*end main.handlebars*/
+
+/*start homepage.handlebars*/
+.post-cards-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 4rem;
+  max-width: 600px;
+}
+
+.post-card-container {
+  margin: 1rem;
+  border: 1px solid #333;
+  width: 95%;
+  border-radius: 4px;
+}
+
+.post-card-heading {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  background: #333;
+  padding: 0.5rem;
+}
+
+.post-card-body {
+
+  margin: 1rem;
+}
+
+
+/*end homepage.handlebars*/

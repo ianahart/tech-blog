@@ -1,0 +1,9 @@
+<div class='post-card-container'>
+  <div class='post-card-heading'>
+    <h3>{{this.title}}</h3>
+    <p>Posted by <span>{{this.user.username}}</span> on {{format_date this.createdAt}}</p>
+  </div>
+  <div class='post-card-body'>
+    {{truncate this.post_text}}
+  </div>
+</div>
