@@ -113,8 +113,8 @@ nav ul li a:hover {
 }
 /*end homepage.handlebars*/
 
-/*start login page*/
-.login-container {
+/*start login and signup page*/
+.login-container, .signup-container {
   max-width: 1280px;
   background-color: #f4efef;
   border-radius: 4px;
@@ -181,6 +181,21 @@ form h2 {
 .btn-container {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth-link {
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+  color: var(--primary-text);
+}
+
+.auth-link a {
+  text-decoration: none;
+  color: var(--primary);
+  margin-left: 0.5rem;
 }
 
 .btn-container button {
