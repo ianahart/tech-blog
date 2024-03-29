@@ -1,0 +1,44 @@
+/*start main.handlebars*/
+
+nav {
+  padding: 1rem;
+  background-color: #333;
+  color: #fff;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav ul li {
+  margin: 0 1rem;
+}
+
+nav ul li a {
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: all 0.25s ease-in-out;
+}
+
+nav ul li a:hover {
+  opacity: 0.8;
+}
+
+.dashboard-heading-container {
+  margin: 1.5rem 0 1.5rem 1rem;
+  background-color: #eee;
+  width: 200px;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.dashboard-heading-container h2 {
+  font-size: 2rem;
+  color: #333;
+}
+
+/*end main.handlebars*/
