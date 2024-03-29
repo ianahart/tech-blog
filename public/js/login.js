@@ -13,7 +13,7 @@ const clearLoginError = () => {
 
 const loginFormHandler = async (event) => {
   event.preventDefault();
-  clearError();
+  clearLoginError();
   const username = document.getElementById('login-username').value.trim();
   const password = document.getElementById('login-password').value.trim();
 
