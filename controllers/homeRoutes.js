@@ -32,4 +32,15 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
+router.get('/login', (req, res) => {
+  try {
+    if (req.session.logged_in) {
+      return res.redirect('/');
+    }
+    res.render('login');
+  } catch (error) {
+    res.status(500).json({ message: 'Internal Server Error', error });
+  }
+});
+
 module.exports = router;
