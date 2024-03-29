@@ -1,31 +1,31 @@
 const signUpForm = document.getElementById('signup-form');
 const signUpError = document.querySelector('.signup-error');
 
-const displayError = (error) => {
+const displaySignUpError = (error) => {
   signUpError.classList.remove('hidden');
   signUpError.textContent = error;
 };
 
-const clearError = () => {
+const clearSignUpError = () => {
   signUpError.textContent = '';
   signUpError.classList.add('hidden');
 };
 
 const signUpFormHandler = async (event) => {
   event.preventDefault();
-  clearError();
+  clearSignUpError();
   const username = document.getElementById('signup-username').value.trim();
   const password = document.getElementById('signup-password').value.trim();
   const confirmPassword = document.getElementById('signup-confirm-password').value.trim();
 
   if (!username || !password || !confirmPassword) {
     signUpError.classList.remove('hidden');
-    displayError('Please make sure to fill out all fields');
+    displaySignUpError('Please make sure to fill out all fields');
     return;
   }
 
   if (password !== confirmPassword) {
-    displayError('Passwords do not match');
+    displaySignUpError('Passwords do not match');
     return;
   }
 
@@ -44,7 +44,7 @@ const signUpFormHandler = async (event) => {
     }
   } catch (err) {
     const errObj = JSON.parse(err.message);
-    displayError(errObj.error);
+    displaySignUpError(errObj.error);
   }
 };
 
