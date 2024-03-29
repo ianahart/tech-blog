@@ -75,6 +75,10 @@ nav ul li a:hover {
   color: var(--secondary);
 }
 
+#log-out {
+  cursor: pointer;
+}
+
 /*end main.handlebars*/
 
 /*start homepage.handlebars*/
