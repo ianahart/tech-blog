@@ -22,7 +22,8 @@ router.post('/', requireUserNameAndPassword, async (req, res) => {
       res.status(201).json({ message: 'success', data: {} });
     });
   } catch (error) {
-    res.status(500).json({ message: 'Intenal Server Error', error });
+    console.log(error);
+    res.status(500).json({ message: 'Internal Server Error', error });
   }
 });
 
@@ -55,7 +56,6 @@ router.post('/login', requireUserNameAndPassword, async (req, res) => {
       res.status(200).json({ message: 'success', data: dbUserData });
     });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ message: 'Internal Server Error', error });
   }
 });
