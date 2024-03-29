@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    const postData = await PostService.getAllUserPosts();
+    const postData = await PostService.getAllUserPosts(req.session.user_id);
 
     res.render('dashboard', {
       pageTitle: 'Dashboard',
@@ -27,6 +27,29 @@ router.get('/dashboard', withAuth, async (req, res) => {
       userId: req.session.user_id,
       posts: postData.map((post) => post.get({ plain: true })),
     });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Internal Server Error', error });
+  }
+});
+
+router.get('/login', (req, res) => {
+  try {
+    if (req.session.logged_in) {
+      return res.redirect('/');
+    }
+    res.render('login');
+  } catch (error) {
+    res.status(500).json({ message: 'Internal Server Error', error });
+  }
+});
+
+router.get('/signup', (req, res) => {
+  try {
+    if (req.session.logged_in) {
+      return res.redirect('/');
+    }
+    res.render('signup');
   } catch (error) {
     res.status(500).json({ message: 'Internal Server Error', error });
   }
