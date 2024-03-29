@@ -1,14 +1,10 @@
 const router = require('express').Router();
 const UserService = require('../../services/UserService');
+const requireUserNameAndPassword = require('../../middleware/requireUserNameAndPassword');
 
 // Create user
-router.post('/', async (req, res) => {
+router.post('/', requireUserNameAndPassword, async (req, res) => {
   try {
-    // make sure fields are present
-    if (req.body.username.trim().length === 0 || req.body.password.trim().length === 0) {
-      return res.status(400).json({ message: 'Bad Request', error: 'Please make sure to fill out all fields' });
-    }
-
     const userExists = await UserService.getUserByUserName(req.body.username);
 
     // check to see if email exists
@@ -31,13 +27,8 @@ router.post('/', async (req, res) => {
 });
 
 // login user
-router.post('/login', async (req, res) => {
+router.post('/login', requireUserNameAndPassword, async (req, res) => {
   try {
-    // make sure fields are present
-    if (req.body.username.trim().length === 0 || req.body.password.trim().length === 0) {
-      return res.status(400).json({ message: 'Bad Request', error: 'Please make sure to fill out all fields' });
-    }
-
     let dbUserData = await UserService.getUserByUserName(req.body.username);
 
     // validate that the email exists
