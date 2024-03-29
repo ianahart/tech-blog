@@ -11,8 +11,20 @@ class UserService {
       where: { username },
     });
 
-    return !(userData === null);
+    return userData;
   }
+
+  static detachPasswordField = (data) => {
+    const exclude = ['password'];
+    const includedFields = {};
+
+    for (let prop in data) {
+      if (!exclude.includes(prop)) {
+        includedFields[prop] = data[prop];
+      }
+    }
+    return includedFields;
+  };
 }
 
 module.exports = UserService;
