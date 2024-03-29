@@ -1,0 +1,16 @@
+<section class='single-post-container'>
+  <div class='single-post'>
+    <div class='single-post-header'>
+      <h2>{{post.title}}</h2>
+      <p>Posted by {{post.user.username}} on {{format_date post.createdAt}}</p>
+    </div>
+    <div class='single-post-body'>{{post.post_text}}</div>
+    {{#if post.owner}}
+      <div class='single-post-btn-container'>
+        <button>Update</button>
+        <button>Delete</button>
+      </div>
+    {{/if}}
+  </div>
+
+</section>

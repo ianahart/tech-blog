@@ -77,6 +77,8 @@ nav ul li a:hover {
 
 #log-out {
   cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 /*end main.handlebars*/
@@ -94,16 +96,19 @@ nav ul li a:hover {
 
 .post-card-container {
   margin: 1rem;
-  border: 1px solid var(--secondary);
+  border: 1px solid var(--border-color);
   width: 95%;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .post-card-heading {
   display: flex;
   justify-content: space-between;
   color: #fff;
-  background: var(--secondary);
+  background: var(--primary);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   padding: 0.5rem;
 }
 
@@ -221,6 +226,73 @@ form h2 {
 }
 
 /*end login page*/
+
+
+/*start single-post*/
+
+.single-post-container {
+  max-width: 1280px;
+  border-radius: 4px;
+  margin: 0 auto;
+  margin-top: 10rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+.single-post {
+  border: 1px solid var(--border-color);
+  margin: 0 auto;
+  margin-top: 4rem;
+  max-width: 600px;
+  border-radius: 4px;
+}
+
+.single-post-header {
+  background-color: var(--primary);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.single-post-body {
+  padding: 1rem;
+  color: var(--primary-text);
+  line-height: 1.6;
+}
+
+.single-post-btn-container {
+  margin: 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.single-post-btn-container button {
+  margin:  0 1rem;
+  min-width: 80px;
+  height: 35px;
+  font-size: 1.2rem;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.single-post-btn-container button:hover {
+  opacity: 0.8;
+}
+
+.single-post-btn-container button:last-of-type {
+  background-color: var(--primary-text);
+}
+
+.single-post-btn-container button:first-of-type {
+  background-color: var(--primary);
+}
+
+
+/*end single post*/
 
 
 .hidden {

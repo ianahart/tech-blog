@@ -55,4 +55,21 @@ router.get('/signup', (req, res) => {
   }
 });
 
+router.get('/posts/:id', async (req, res) => {
+  try {
+    const postData = await PostService.getPostById(req.params.id);
+    const post = PostService.placeOwnership(postData, req.session.user_id);
+
+    console.log(post);
+    res.render('post', {
+      post,
+      loggedIn: req.session.logged_in,
+      userId: req.session.user_id,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Internal Server Error', error });
+  }
+});
+
 module.exports = router;
