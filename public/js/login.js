@@ -34,7 +34,7 @@ const loginFormHandler = async (event) => {
       const errorMessage = await response.text();
       throw new Error(errorMessage);
     } else {
-      document.location.replace('/dashboard');
+      document.location.replace('/');
     }
   } catch (err) {
     const errObj = JSON.parse(err.message);

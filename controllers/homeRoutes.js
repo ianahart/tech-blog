@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    const postData = await PostService.getAllUserPosts();
+    const postData = await PostService.getAllUserPosts(req.session.user_id);
 
     res.render('dashboard', {
       pageTitle: 'Dashboard',
