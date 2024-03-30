@@ -1,6 +1,22 @@
 const router = require('express').Router();
 const withAuth = require('../../middleware/withAuth');
+const requirePostIdAndCommentText = require('../../middleware/requirePostIdAndCommentText');
 const CommentService = require('../../services/CommentService');
+
+// create a new comment
+router.post('/', withAuth, requirePostIdAndCommentText, async (req, res) => {
+  try {
+    await CommentService.createComment({
+      post_id: req.body.postId,
+      user_id: req.session.user_id,
+      comment_text: req.body.commentText,
+    });
+
+    res.status(201).json({ message: 'success' });
+  } catch (error) {
+    res.status(500).json({ message: 'Internal Server Error', error });
+  }
+});
 
 // delete comment by id
 router.delete('/:id', withAuth, async (req, res) => {

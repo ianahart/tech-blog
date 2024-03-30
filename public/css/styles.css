@@ -181,9 +181,11 @@ form h2 {
   height: 35px;
   border-radius: 8px;
   border: 1px solid var(--border-color);
+  padding: 0.25rem;
 }
 
 .form-group textarea {
+  padding: 0.25rem;
   height: 100px;
   border-radius: 8px;
   border: 1px solid var(--border-color);
@@ -278,7 +280,7 @@ form h2 {
 }
 
 .single-post-btn-container button, .post-comment-trigger button,
-.comment-delete-btn-container button {
+.comment-delete-btn-container button, .post-comment-btn-container button {
   margin:  0 1rem;
   min-width: 80px;
   height: 35px;
@@ -379,10 +381,11 @@ form h2 {
 }
 
 .modal-content {
+  display: flex;
+  justify-content: center;
   width: 450px;
   min-height: 250px;
-   background-color: #fff;
-   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color: transparent;
    border-radius: 8px;
    padding: 1rem;
 }
@@ -396,6 +399,25 @@ form h2 {
   background-color: #ff3333;
   height: auto;
   padding: 0.5rem;
+}
+
+.post-comment-btn-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.post-comment-btn-container button:first-of-type {
+  background-color: var(--primary);
+}
+
+.post-comment-btn-container button:last-of-type {
+  background-color: var(--primary-text);
+}
+
+
+.modal-content h3 {
+  color: var(--secondary);
 }
 
 /*end comments*/

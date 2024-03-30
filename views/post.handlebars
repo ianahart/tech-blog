@@ -29,7 +29,8 @@
   </div>
   <div class="modal hidden" id="modal" data-loggedIn="{{loggedIn}}">
     <div class="modal-content">
-      {{> post-comment-form}}
+      {{> post-comment-form postId=post.id postTitle=post.title}}
+
     </div>
   </div>
 </section>

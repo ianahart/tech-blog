@@ -16,6 +16,10 @@ class CommentService {
   static canActionComment(comment, userId) {
     return comment.user_id === userId;
   }
+
+  static async createComment(data) {
+    await Comment.create(data);
+  }
 }
 
 module.exports = CommentService;
