@@ -1,0 +1,14 @@
+<div class='comment'>
+  <p class='comment-text'>{{this.comment_text}}</p>
+  <div class='comment-author'>
+    <p>{{this.user.username}}</p>
+    <p>{{format_date this.createdAt}}</p>
+  </div>
+  {{#if this.owner}}
+    <div class='comment-delete-btn-container'>
+      {{#if this}}
+        <button id='delete-comment-btn' data-id='{{this.id}}'>Delete</button>
+      {{/if}}
+    </div>
+  {{/if}}
+</div>

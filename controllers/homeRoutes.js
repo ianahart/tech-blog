@@ -4,7 +4,7 @@ const withAuth = require('../middleware/withAuth');
 
 router.get('/', async (req, res) => {
   try {
-    const postData = await PostService.getAllPosts();
+    const postData = await PostService.getAllPostsWithUserAndComments();
 
     res.render('homepage', {
       pageTitle: 'Home',
@@ -51,6 +51,36 @@ router.get('/signup', (req, res) => {
     }
     res.render('signup');
   } catch (error) {
+    res.status(500).json({ message: 'Internal Server Error', error });
+  }
+});
+
+router.get('/posts/:id', async (req, res) => {
+  try {
+    const postData = await PostService.getPostWithUserAndCommentsById(req.params.id);
+    const post = PostService.placeOwnership(postData, req.session.user_id);
+
+    res.render('post', {
+      post,
+      loggedIn: req.session.logged_in,
+      userId: req.session.user_id,
+    });
+  } catch (error) {
+    res.status(500).json({ message: 'Internal Server Error', error });
+  }
+});
+
+router.get('/posts/:id/edit', async (req, res) => {
+  try {
+    const post = await PostService.getPostWithUserById(req.params.id);
+
+    res.render('update-post', {
+      post: post.get({ plain: true }),
+      loggedIn: req.session.logged_in,
+      userId: req.session.user_id,
+    });
+  } catch (error) {
+    console.log(error);
     res.status(500).json({ message: 'Internal Server Error', error });
   }
 });

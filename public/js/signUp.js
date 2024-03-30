@@ -44,7 +44,6 @@ const signUpFormHandler = async (event) => {
     }
   } catch (err) {
     const errObj = JSON.parse(err.message);
-    console.log(errObj);
     if (errObj.message.toLowerCase() === 'internal server error') {
       displaySignUpError(errObj.error.errors[0].message);
       return;

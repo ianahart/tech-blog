@@ -4,4 +4,6 @@ module.exports = {
   },
 
   truncate: (text) => text.split(' ').slice(0, 10).join(' ') + '...',
+
+  eq: (a, b) => a === b,
 };
