@@ -11,13 +11,36 @@
         <button type='button' id='delete-btn' data-id={{post.id}}>Delete</button>
       </div>
     {{/if}}
-
+    <div class="comments-container">
+      {{# if post.comments.length}}
+      <div class="comments-divider"></div>
+           <div class="comments-title">
+            <p>Comments</p>
+           </div>
+           <div class="comments">
+            {{#each post.comments}}
+                {{> comment-card userId=../userId}}
+            {{/each}}
+           </div>
+      {{/if}}
+  </div>
+  <div class="post-comment-trigger">
+    <button id="open-modal-btn">Leave comment</button>
+  </div>
+  <div class="modal hidden" id="modal" data-loggedIn="{{loggedIn}}">
+    <div class="modal-content">
+      {{> post-comment-form}}
+    </div>
   </div>
 </section>
-{{#if post.owner}}
-  <script src='/js/deletePost.js'></script>
-  <script>
-    const updateBtn = document.getElementById('update-btn').addEventListener('click', (event) =>
-    document.location.replace(`/posts/${event.target.dataset.id}/edit`))
-  </script>
-{{/if}}
+  <script src="/js/postComment.js"></script>
+  {{#if loggedIn}}
+      <script src="/js/deleteComment.js"></script>
+  {{/if}}
+  {{#if post.owner}}
+    <script src='/js/deletePost.js'></script>
+    <script>
+      const updateBtn = document.getElementById('update-btn').addEventListener('click', (event) =>
+      document.location.replace(`/posts/${event.target.dataset.id}/edit`))
+    </script>
+  {{/if}}

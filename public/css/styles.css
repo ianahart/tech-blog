@@ -277,7 +277,8 @@ form h2 {
   justify-content: flex-end;
 }
 
-.single-post-btn-container button {
+.single-post-btn-container button, .post-comment-trigger button,
+.comment-delete-btn-container button {
   margin:  0 1rem;
   min-width: 80px;
   height: 35px;
@@ -301,6 +302,105 @@ form h2 {
 .single-post-btn-container button:first-of-type {
   background-color: var(--primary);
 }
+
+/*start comments*/
+.comments-container {
+  padding: 1rem;
+}
+
+.comments-divider {
+  width: 90%;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.comments-title {
+  margin: 1rem 0;
+  display: flex;
+}
+
+.comments-title p {
+  color: var(--primary-text);
+  font-weight: bold;
+}
+
+.comment {
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  border-radius: 8px;
+  width: 60%;
+}
+
+.comment-text {
+  color: var(--primary-text);
+}
+
+.comment-author {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.comment-author p:first-of-type {
+  color: var(--secondary);
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.comment-author p:last-of-type {
+  color: var(--primary-text);
+}
+
+.post-comment-trigger {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.post-comment-trigger button {
+  background-color: var(--primary);
+  padding: 0 0.5rem;
+}
+
+.post-comment-trigger button:hover {
+  opacity: 0.8;
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.75);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-content {
+  width: 450px;
+  min-height: 250px;
+   background-color: #fff;
+   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+   border-radius: 8px;
+   padding: 1rem;
+}
+
+.comment-delete-btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.comment-delete-btn-container button {
+  background-color: #ff3333;
+  height: auto;
+  padding: 0.5rem;
+}
+
+/*end comments*/
+
+
 /*end single post*/
 
 /*start update blog post */
@@ -328,4 +428,10 @@ form h2 {
     flex-direction: column;
     align-items: center;
   }
+}
+
+@media screen and (max-width: 600px) {
+    .modal-content {
+      width: 95%;
+    }
 }
