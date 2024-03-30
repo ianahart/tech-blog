@@ -1,6 +1,6 @@
 const deleteBtn = document.getElementById('delete-btn');
-console.log(deleteBtn);
 
+// delete a post request
 const deletePostHandler = async (event) => {
   event.stopPropagation();
   try {
@@ -10,6 +10,7 @@ const deletePostHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
 
+    // if response is good sent user to the dashboard
     if (response.ok) {
       document.location.replace('/dashboard');
     }

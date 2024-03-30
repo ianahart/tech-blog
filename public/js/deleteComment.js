@@ -1,6 +1,7 @@
 const deleteCommentBtns = document.querySelectorAll('#delete-comment-btn');
 
-const deleteCommentHandler = async (event) => {
+// delete request for deleting a comment
+deleteCommentHandler = async (event) => {
   try {
     const commentId = event.target.dataset.id;
 
@@ -9,6 +10,7 @@ const deleteCommentHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
 
+    // if response is good, reload the page for the user
     if (response.ok) {
       document.location.reload();
     }

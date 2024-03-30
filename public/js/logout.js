@@ -12,9 +12,8 @@ const logout = async () => {
     } else {
       throw new Error('Could not logout');
     }
-  } catch (err) {
-    console.log(err.message);
-    throw new Error(err.message);
+  } catch (error) {
+    throw new Error(error.message);
   }
 };
 
