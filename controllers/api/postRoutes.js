@@ -3,6 +3,21 @@ const PostService = require('../../services/PostService');
 const withAuth = require('../../middleware/withAuth');
 const requireTitleAndPostText = require('../../middleware/requireTitleAndPostText');
 
+// create a post
+router.post('/', withAuth, requireTitleAndPostText, async (req, res) => {
+  try {
+    await PostService.createPost({
+      user_id: req.session.user_id,
+      post_text: req.body.postText,
+      title: req.body.title,
+    });
+
+    res.status(201).json({ message: 'success' });
+  } catch (error) {
+    res.status(500).json({ message: 'Internal Server Error', error });
+  }
+});
+
 // delete a post by its id
 router.delete('/:id', withAuth, async (req, res) => {
   try {

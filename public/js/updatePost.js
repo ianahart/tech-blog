@@ -35,8 +35,6 @@ const updatePostHandler = async (event) => {
       throw new Error(errorMessage);
     }
   } catch (error) {
-    console.log(error);
-    console.log(error.message);
     const errObj = JSON.parse(error.message);
     if (errObj.message.toLowerCase() === 'internal server error') {
       displayUpdatePostError(errObj.error.errors[0].message);
