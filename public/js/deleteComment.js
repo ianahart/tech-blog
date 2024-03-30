@@ -1,4 +1,4 @@
-const deleteCommentBtn = document.getElementById('delete-comment-btn');
+const deleteCommentBtns = document.querySelectorAll('#delete-comment-btn');
 
 const deleteCommentHandler = async (event) => {
   try {
@@ -17,6 +17,6 @@ const deleteCommentHandler = async (event) => {
   }
 };
 
-if (deleteCommentBtn) {
-  deleteCommentBtn.addEventListener('click', deleteCommentHandler);
+if (deleteCommentBtns) {
+  deleteCommentBtns.forEach((deleteCommentBtn) => deleteCommentBtn.addEventListener('click', deleteCommentHandler));
 }
