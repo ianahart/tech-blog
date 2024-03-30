@@ -1,1 +1,12 @@
-<h1>Dashboard</h1>
+<div class="dashboard-container">
+  <div class="post-cards-container">
+    {{#each posts}}
+        {{>post-card}}
+    {{/each}}
+  </div>
+   <div class="new-post-btn-container">
+    <a href="/posts/create">
+      <button>Create post</button>
+    </a>
+   </div>
+</div>

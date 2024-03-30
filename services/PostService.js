@@ -1,6 +1,11 @@
 const { Post, User, Comment } = require('../models');
 
 class PostService {
+  // create a post
+  static async createPost(data) {
+    await Post.create(data);
+  }
+
   // check to see if user has permission to action on a post
   static canActionPost(postData, userId) {
     const post = postData.get({ plain: true });

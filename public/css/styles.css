@@ -60,6 +60,8 @@ nav ul li a:hover {
   opacity: 0.8;
 }
 
+
+
 .dashboard-heading-container {
   margin: 1.5rem 0 1.5rem 1rem;
   background-color: #eee;
@@ -280,7 +282,8 @@ form h2 {
 }
 
 .single-post-btn-container button, .post-comment-trigger button,
-.comment-delete-btn-container button, .post-comment-btn-container button {
+.comment-delete-btn-container button, .post-comment-btn-container button,
+.new-post-btn-container button {
   margin:  0 1rem;
   min-width: 80px;
   height: 35px;
@@ -425,8 +428,8 @@ form h2 {
 
 /*end single post*/
 
-/*start update blog post */
-.update-blog-post-container {
+/*start update blog post and create blog post */
+.update-blog-post-container, .create-blog-post-container {
     max-width: 1280px;
   background-color: #f4efef;
   border-radius: 4px;
@@ -436,8 +439,38 @@ form h2 {
   width: 100%;
 }
 
-/*end update blog post*/
+/*end update blog post and create blog post*/
 
+/*start dashboard*/
+.dashboard-container {
+    max-width: 1280px;
+  border-radius: 4px;
+  margin: 0 auto;
+  padding: 1rem;
+  width: 100%;
+}
+
+.new-post-btn-container {
+  margin: 2rem auto 2rem auto;
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+.new-post-btn-container button, .new-post-btn-container a {
+  width: 100%;
+  background-color: var(--primary-text);
+  border-radius: 8px;
+  font-size: 1.2rem;
+}
+
+.new-post-btn-container button:hover {
+  opacity: 0.8;
+}
+
+
+
+/*end dashboard*/
 
 .hidden {
   display: none;
@@ -456,4 +489,5 @@ form h2 {
     .modal-content {
       width: 95%;
     }
+
 }

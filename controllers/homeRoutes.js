@@ -2,6 +2,20 @@ const PostService = require('../services/PostService');
 const router = require('express').Router();
 const withAuth = require('../middleware/withAuth');
 
+// go to create a post page
+router.get('/posts/create', withAuth, (req, res) => {
+  try {
+    res.render('create-post', {
+      loggedIn: req.session.logged_in,
+      userId: req.session.user_id,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Internal Server Error', error });
+  }
+});
+
+// display posts with user and a comments on the homepage
 router.get('/', async (req, res) => {
   try {
     const postData = await PostService.getAllPostsWithUserAndComments();
@@ -17,6 +31,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// display all the user's posts on the dashboard
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     const postData = await PostService.getAllUserPosts(req.session.user_id);
@@ -33,6 +48,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
+// display the login page, if already logged in redirect to homepage
 router.get('/login', (req, res) => {
   try {
     if (req.session.logged_in) {
@@ -44,6 +60,7 @@ router.get('/login', (req, res) => {
   }
 });
 
+// display the signup page, if already logged in redirect to homepage
 router.get('/signup', (req, res) => {
   try {
     if (req.session.logged_in) {
@@ -55,6 +72,7 @@ router.get('/signup', (req, res) => {
   }
 });
 
+// get to single post page with post and post's comments
 router.get('/posts/:id', async (req, res) => {
   try {
     const postData = await PostService.getPostWithUserAndCommentsById(req.params.id);
@@ -70,6 +88,7 @@ router.get('/posts/:id', async (req, res) => {
   }
 });
 
+// go to edit post page send back the post to populate the form fields with existing data
 router.get('/posts/:id/edit', async (req, res) => {
   try {
     const post = await PostService.getPostWithUserById(req.params.id);
