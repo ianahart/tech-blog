@@ -16,4 +16,8 @@
 </section>
 {{#if post.owner}}
   <script src='/js/deletePost.js'></script>
+  <script>
+    const updateBtn = document.getElementById('update-btn').addEventListener('click', (event) =>
+    document.location.replace(`/posts/${event.target.dataset.id}/edit`))
+  </script>
 {{/if}}

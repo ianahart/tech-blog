@@ -1,16 +1,42 @@
 const router = require('express').Router();
 const PostService = require('../../services/PostService');
 const withAuth = require('../../middleware/withAuth');
+const requireTitleAndPostText = require('../../middleware/requireTitleAndPostText');
 
-router.delete(`/:id`, withAuth, async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const post = await PostService.getPostWithUserById(req.params.id);
 
-    if (!PostService.canDeletePost(post, req.session.user_id)) {
+    if (!PostService.canActionPost(post, req.session.user_id)) {
       return res.status(403).json({ message: 'Forbidden Action', message: "You cannot delete another user's post" });
     }
     post.destroy();
     return res.status(200).json({ message: 'success' });
+  } catch (error) {
+    res.status(500).json({ message: 'Internal Server Error', error });
+  }
+});
+
+router.put('/:id', withAuth, requireTitleAndPostText, async (req, res) => {
+  try {
+    const post = await PostService.getPostWithUserById(req.params.id);
+
+    if (!post) {
+      return res
+        .status(400)
+        .send({ message: 'Bad Request', error: `A post with the id ${req.params.id} was not found` });
+    }
+
+    if (!PostService.canActionPost(post, req.session.user_id)) {
+      return res.status(403).json({ message: 'Forbidden Action', error: "You cannot update another user's post" });
+    }
+
+    post.title = req.body.title;
+    post.post_text = req.body.postText;
+
+    post.save();
+
+    res.status(200).json({ message: 'success' });
   } catch (error) {
     res.status(500).json({ message: 'Internal Server Error', error });
   }

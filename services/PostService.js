@@ -1,8 +1,8 @@
 const { Post, User, Comment } = require('../models');
 
 class PostService {
-  // check to see if user has permission to delete a post
-  static canDeletePost(postData, userId) {
+  // check to see if user has permission to action on a post
+  static canActionPost(postData, userId) {
     const post = postData.get({ plain: true });
     console.log(post.user);
     return userId && userId === post.user.id;

@@ -18,17 +18,17 @@ const signUpFormHandler = async (event) => {
   const password = document.getElementById('signup-password').value.trim();
   const confirmPassword = document.getElementById('signup-confirm-password').value.trim();
 
-  if (!username || !password || !confirmPassword) {
-    signUpError.classList.remove('hidden');
-    displaySignUpError('Please make sure to fill out all fields');
-    return;
-  }
-
-  if (password !== confirmPassword) {
-    displaySignUpError('Passwords do not match');
-    return;
-  }
-
+  //  if (!username || !password || !confirmPassword) {
+  //    signUpError.classList.remove('hidden');
+  //    displaySignUpError('Please make sure to fill out all fields');
+  //    return;
+  //  }
+  //
+  //  if (password !== confirmPassword) {
+  //    displaySignUpError('Passwords do not match');
+  //    return;
+  //  }
+  //
   try {
     const response = await fetch('/api/v1/users/', {
       method: 'POST',
@@ -44,7 +44,6 @@ const signUpFormHandler = async (event) => {
     }
   } catch (err) {
     const errObj = JSON.parse(err.message);
-    console.log(errObj);
     if (errObj.message.toLowerCase() === 'internal server error') {
       displaySignUpError(errObj.error.errors[0].message);
       return;

@@ -66,6 +66,20 @@ router.get('/posts/:id', async (req, res) => {
       userId: req.session.user_id,
     });
   } catch (error) {
+    res.status(500).json({ message: 'Internal Server Error', error });
+  }
+});
+
+router.get('/posts/:id/edit', async (req, res) => {
+  try {
+    const post = await PostService.getPostWithUserById(req.params.id);
+
+    res.render('update-post', {
+      post: post.get({ plain: true }),
+      loggedIn: req.session.logged_in,
+      userId: req.session.user_id,
+    });
+  } catch (error) {
     console.log(error);
     res.status(500).json({ message: 'Internal Server Error', error });
   }
