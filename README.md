@@ -60,6 +60,9 @@ You can run this application locally by following the steps below. You can also 
 
 [Live Application](https://hart-tech-blog-cee9caa9c8e6.herokuapp.com/)
 
+<img width="650" alt="techblog" src="https://github.com/ianahart/tech-blog/assets/29121238/e4122599-2d19-4fd1-9566-c2f4838e2643">
+
+
 ## Tests
 
 N/A
