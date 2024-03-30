@@ -89,7 +89,7 @@ router.get('/posts/:id', async (req, res) => {
 });
 
 // go to edit post page send back the post to populate the form fields with existing data
-router.get('/posts/:id/edit', async (req, res) => {
+router.get('/posts/:id/edit', withAuth, async (req, res) => {
   try {
     const post = await PostService.getPostWithUserById(req.params.id);
 
