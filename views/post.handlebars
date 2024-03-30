@@ -2,15 +2,18 @@
   <div class='single-post'>
     <div class='single-post-header'>
       <h2>{{post.title}}</h2>
-      <p>Posted by {{post.user.username}} on {{format_date post.createdAt}}</p>
+      <p>Posted by <strong>{{post.user.username}}</strong> on {{format_date post.createdAt}}</p>
     </div>
     <div class='single-post-body'>{{post.post_text}}</div>
     {{#if post.owner}}
       <div class='single-post-btn-container'>
-        <button>Update</button>
-        <button>Delete</button>
+        <button type='submit' id='update-btn' data-id={{post.id}}>Update</button>
+        <button type='button' id='delete-btn' data-id={{post.id}}>Delete</button>
       </div>
     {{/if}}
-  </div>
 
+  </div>
 </section>
+{{#if post.owner}}
+  <script src='/js/deletePost.js'></script>
+{{/if}}

@@ -4,7 +4,7 @@ const withAuth = require('../middleware/withAuth');
 
 router.get('/', async (req, res) => {
   try {
-    const postData = await PostService.getAllPosts();
+    const postData = await PostService.getAllPostsWithUserAndComments();
 
     res.render('homepage', {
       pageTitle: 'Home',
@@ -57,10 +57,9 @@ router.get('/signup', (req, res) => {
 
 router.get('/posts/:id', async (req, res) => {
   try {
-    const postData = await PostService.getPostById(req.params.id);
+    const postData = await PostService.getPostWithUserAndCommentsById(req.params.id);
     const post = PostService.placeOwnership(postData, req.session.user_id);
 
-    console.log(post);
     res.render('post', {
       post,
       loggedIn: req.session.logged_in,
