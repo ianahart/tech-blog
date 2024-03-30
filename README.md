@@ -45,7 +45,7 @@ You can run this application locally by following the steps below. You can also 
 - In the root of the directory create a `.env` file with your database credentials that match `env.EXAMPLE`.
 - in a terminal window navigate to the root of the project directory and run `mysql -u root -p`.
 - Once inside the MySQL shell run `source db/schema.sql;`
-- In a terminal window run the command `node seeds` to seed the database with e-commerce data.
+- In a terminal window run the command `node seeds` to seed the database with dummy data.
 
 ## Usage
 
